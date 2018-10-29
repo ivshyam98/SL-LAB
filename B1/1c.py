@@ -1,8 +1,17 @@
-def cus_rec(i,lis):
-    if i==len(lis)-1:
-        return lis[i]
+def Max(list):
+    if len(list) == 1:
+        return list[0]
     else:
-        from_future=cus_rec(i+1,lis)
-        return  lis[i] if lis[i]>from_future else from_future
+        m = Max(list[1:])
+        return m if m > list[0] else list[0]
 
-print(cus_rec(0,[int(input('Please enter {} the number'.format(i+1))) for i in range(5)]))
+def main():
+	try:
+		list = eval(input("Enter a list of numbers: "))
+		print ("The largest number is: ", Max(list))
+	except SyntaxError:
+		print ("Please enter comma separated numbers")
+	except:
+		print ("Enter only numbers")
+
+main()
